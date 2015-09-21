@@ -3,9 +3,32 @@ use 5.008001;
 use strict;
 use warnings;
 
+use base 'Pod::Markdown';
+
 our $VERSION = "0.01";
 
+sub new {
+    my $class = shift;
 
+    bless {}, $class;
+}
+
+# Read the contents of a file and stash in object.
+sub read_from_file {
+    my $self = shift;
+    my $file = shift;
+
+    $self->{_markdown} = do { local ( @ARGV, $/ ) = $file; <> };
+
+}
+
+# Return any stashed raw file content.
+sub as_markdown {
+    my $self = shift;
+
+    return $self->{_markdown};
+
+}
 
 1;
 __END__
@@ -40,6 +63,16 @@ have the build process leave README.md untouched.
 
     readme_from="README.md"
     markdown_maker="Pod::Markdown::Passthrough"
+
+=head1 CAVEATS
+
+=over
+
+=item * Only the C<read_from_file()> and C<as_markdown()> methods of
+L<Pod::Markdown> are replaced, so calling any other methods on the object is
+I<very unlikely> to do what you'd expect.
+
+=back
 
 =head1 LICENSE
 
