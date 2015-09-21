@@ -14,15 +14,32 @@ __END__
 
 =head1 NAME
 
-Pod::Markdown::Passthrough - It's new $module
+Pod::Markdown::Passthrough - A passthrough mode for Pod::Markdown.
 
 =head1 SYNOPSIS
 
     use Pod::Markdown::Passthrough;
 
+    my $parser = Pod::Markdown::Passthrough->new();
+    $parser->read_from_file($file_containing_markdown);
+    # Outputs the raw contents of $file_containing_markdown.
+    print $parser->as_markdown;
+
 =head1 DESCRIPTION
 
-Pod::Markdown::Passthrough is ...
+Pod::Markdown::Passthrough is a child class of Pod::Markdown which makes the
+assumption that the source file is already markdown, and performs no processing
+of it at all.
+
+github-aware CPAN module authoring tools such as L<Minilla> build README.md
+from the module POD, but sometimes you want the README.md to be something
+specific, and independent of the module POD.
+
+For example, using L<Minilla>, add the following two lines to C<minil.toml> to
+have the build process leave README.md untouched.
+
+    readme_from="README.md"
+    markdown_maker="Pod::Markdown::Passthrough"
 
 =head1 LICENSE
 
@@ -33,7 +50,7 @@ it under the same terms as Perl itself.
 
 =head1 AUTHOR
 
-Dave Webb E<lt>wfh@dcw.co.nzE<gt>
+Dave Webb E<lt>github@d5ve.comE<gt>
 
 =cut
 
