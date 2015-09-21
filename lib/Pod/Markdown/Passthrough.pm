@@ -14,7 +14,7 @@ sub new {
 }
 
 # Read the contents of a file and stash in object.
-sub read_from_file {
+sub parse_from_file {
     my $self = shift;
     my $file = shift;
 
@@ -44,7 +44,7 @@ Pod::Markdown::Passthrough - A passthrough mode for Pod::Markdown.
     use Pod::Markdown::Passthrough;
 
     my $parser = Pod::Markdown::Passthrough->new();
-    $parser->read_from_file($file_containing_markdown);
+    $parser->parse_from_file($file_containing_markdown);
     # Outputs the raw contents of $file_containing_markdown.
     print $parser->as_markdown;
 
@@ -68,7 +68,7 @@ have the build process leave README.md untouched.
 
 =over
 
-=item * Only the C<read_from_file()> and C<as_markdown()> methods of
+=item * Only the C<parse_from_file()> and C<as_markdown()> methods of
 L<Pod::Markdown> are replaced, so calling any other methods on the object is
 I<very unlikely> to do what you'd expect.
 
