@@ -1,7 +1,7 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "A passthrough mode for Pod::Markdown.",
    "author" : [
-      "Dave Webb <wfh@dcw.co.nz>"
+      "Dave Webb <github@d5ve.com>"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Minilla/v2.5.0, CPAN::Meta::Converter version 2.150005",
@@ -42,17 +42,34 @@
       },
       "runtime" : {
          "requires" : {
+            "Pod::Markdown" : "0",
             "perl" : "5.008001"
          }
       },
       "test" : {
          "requires" : {
+            "File::Spec" : "0",
+            "FindBin" : "0",
             "Test::More" : "0.98"
          }
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/d5ve/p5-Pod-Markdown-Passthrough/issues"
+      },
+      "homepage" : "https://github.com/d5ve/p5-Pod-Markdown-Passthrough",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/d5ve/p5-Pod-Markdown-Passthrough.git",
+         "web" : "https://github.com/d5ve/p5-Pod-Markdown-Passthrough"
+      }
+   },
    "version" : "0.01",
    "x_authority" : "cpan:DAVEWEBB",
+   "x_contributors" : [
+      "Dave Webb <wfh@dcw.co.nz>"
+   ],
    "x_serialization_backend" : "JSON::PP version 2.27203"
 }
